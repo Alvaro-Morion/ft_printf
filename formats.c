@@ -1,47 +1,56 @@
-#include "ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   formats.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/17 09:00:10 by amorion-          #+#    #+#             */
+/*   Updated: 2021/08/17 10:22:33 by amorion-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_figures(int n)
+#include "ft_printf.h"
+#include <stdio.h>
+
+int	ft_figures(int n)
 {
-	int i;
+	int	i;
 
 	i = 1;
-	while(n / 10)
+	while (n / 10)
 	{
 		i++;
 		n = n / 10;
 	}
 	if (n < 0)
 		i++;
-	return(i);
+	return (i);
 }
 
-int ft_figuresu(unsigned int n)
+int	ft_figuresu(unsigned int n)
 {
-	int i;
+	int	i;
 
 	i = 1;
-	while(n / 10)
+	while (n / 10)
 	{
 		i++;
 		n = n / 10;
 	}
-	return(i);
+	return (i);
 }
 
-int ft_print_hex(unsigned long long d, char c)
+int	ft_print_hex(unsigned long long d, char c)
 {
-	int i;
-    char *str;
+	int		i;
+	char	*str;
 
 	i = 0;
-    if (c == 'x')
-	{
-    	str = "0123456789abcdef";
-	}
+	if (c == 'x')
+		str = "0123456789abcdef";
 	if (c == 'X')
-    {
 		str = "0123456789ABCDEF";
-	}
 	if (d < 16)
 	{
 		write(1, &str[d % 16], 1);
@@ -51,7 +60,7 @@ int ft_print_hex(unsigned long long d, char c)
 	{
 		i = ft_print_hex(d / 16, c);
 		write(1, &str[d % 16], 1);
-		return(i + 1);
+		return (i + 1);
 	}
 }
 
@@ -72,8 +81,8 @@ void	ft_putnbru_fd(unsigned int n, int fd)
 	}
 }
 
-int ft_print_address(unsigned long long p) // El retorno de los punteros está mal
+int	ft_print_address(unsigned long long p)
 {
 	write(1, "0x", 2);
-	return(ft_print_hex(p, 'x') + 2);
+	return (ft_print_hex(p, 'x') + 2);
 }
