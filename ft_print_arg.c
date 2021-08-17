@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 09:00:43 by amorion-          #+#    #+#             */
-/*   Updated: 2021/08/17 10:28:53 by amorion-         ###   ########.fr       */
+/*   Updated: 2021/08/17 16:34:53 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ static int	ft_print_chars(va_list ap, char c)
 	else
 	{
 		s = va_arg(ap, char *);
+		if (!s)
+			return(write(1, "\0", 1));
 		ft_putstr_fd(s, 1);
 		return (ft_strlen(s));
 	}
