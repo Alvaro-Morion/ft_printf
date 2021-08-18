@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 09:01:07 by amorion-          #+#    #+#             */
-/*   Updated: 2021/08/18 10:07:07 by amorion-         ###   ########.fr       */
+/*   Updated: 2021/08/18 11:00:31 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static int	ft_return_err(int r, int n)
 {
-	if (n == 0)
-		return (r);
-	else
+	if (n == -1)
 		return (-1);
+	else
+		return (r);
 }
 
 int	ft_printf(const char *str, ...)
@@ -33,7 +33,7 @@ int	ft_printf(const char *str, ...)
 		if (*str == '%' && *(str + 1))
 		{
 			n = ft_print_arg(ap, *(str + 1));
-			if (n < 0 || n == 0)
+			if (n < 0)
 				return (ft_return_err(r, n));
 			r = r + n;
 			str++;
