@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 09:00:21 by amorion-          #+#    #+#             */
-/*   Updated: 2021/08/17 09:00:24 by amorion-         ###   ########.fr       */
+/*   Updated: 2021/08/18 09:59:51 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,12 @@ void	ft_putstr_fd(char *s, int fd)
 
 size_t	ft_strlen(char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (str[i])
+	while (str[i] && i <= 2147483648)
 		i++;
+	if (i == 2147483648)
+		return (0);
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/17 09:00:43 by amorion-          #+#    #+#             */
-/*   Updated: 2021/08/17 16:34:53 by amorion-         ###   ########.fr       */
+/*   Updated: 2021/08/18 10:01:22 by amorion-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,13 @@ static int	ft_print_chars(va_list ap, char c)
 	{
 		s = va_arg(ap, char *);
 		if (!s)
-			return(write(1, "\0", 1));
-		ft_putstr_fd(s, 1);
-		return (ft_strlen(s));
+			return (write(1, "(null)", 6));
+		if (ft_strlen(s) > 0)
+		{
+			ft_putstr_fd(s, 1);
+			return (ft_strlen(s));
+		}
+		return (-1);
 	}
 }
 
@@ -75,8 +79,5 @@ int	ft_print_arg(va_list ap, char c)
 		return (1);
 	}
 	else
-	{
-		write(1, &c, 1);
-		return (2);
-	}
+		return (0);
 }
